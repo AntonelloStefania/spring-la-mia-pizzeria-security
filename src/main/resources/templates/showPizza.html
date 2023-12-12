@@ -8,7 +8,7 @@
 <body>
 	<div th:replace="frags::header"></div>
 	<div class="container">
-			<div class="col-12 text-end">
+			<div class="col-12 text-end" sec:authorize="hasAuthority('ADMIN')">
 				<a class="btn btn-success my-5 fw-bold" th:href="@{/pizza/{id}/discount/create (id=${pizza.id})}">Aggiungi offerta</a>
 			</div>
 		<div class="row">
@@ -36,7 +36,7 @@
 			      <td>[[*{name}]]</td>
 			      <td>[[*{start_date}]]</td>
 			      <td>[[*{end_date}]]</td>
-			      <td>
+			      <td sec:authorize="hasAuthority('ADMIN')">
 					  <a class="btn btn-warning" 
 					  	 th:href="@{/pizza/{id}/discount/{discount_id}(id=${pizza.id}, discount_id=${discount.id})}">Modifica</a>
 				  	</td>

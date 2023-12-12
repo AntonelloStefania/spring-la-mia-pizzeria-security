@@ -11,7 +11,7 @@
 	<div th:replace="frags::home" class="my-5"></div>
 	<div class="container">
 	<div class="row">
-		<div class="col-12 text-end">			
+		<div class="col-12 text-end" sec:authorize="hasAuthority('ADMIN')">			
 			<a href="/ingredienti/create" class="btn btn-outline-success my-3">Aggiungi ingrediente</a>
 		</div>
 	</div>
@@ -24,7 +24,7 @@
 					th:object="${ingredient}"
 					>
 						<span>[[*{name}]]</span>
-						<span class="ms-5">
+						<span class="ms-5" sec:authorize="hasAuthority('ADMIN')">
 							<form
 							method="POST"
 							th:action="@{/ingredienti/delete/{id} (id=*{id})}"
